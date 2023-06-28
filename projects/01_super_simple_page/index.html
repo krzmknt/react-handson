@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>React App</title>
+  </head>
+  <body>
+    <!-- React で作成したコンポーネントを表示するための div 要素 -->
+    <div id="app">Loading...</div>
+
+    <!-- React のコアライブラリ -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <!-- React の DOM 操作関連のライブラリ -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script>
+      const container = document.getElementById("app");
+      const root = ReactDOM.createRoot(container);
+      root.render(React.createElement("h1", null, "Hello React! 🚀"));
+    </script>
+  </body>
+</html>
