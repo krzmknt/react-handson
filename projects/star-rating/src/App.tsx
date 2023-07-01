@@ -24,13 +24,13 @@ export const App = () => {
     <>
       <AddColorForm
         onNewColor={(title, color) => {
-          const newColors = [
+          const newColors: colorProps[] = [
             ...colors,
             {
               id: v4(),
-              rating: 0,
               title,
               color,
+              rating: 0,
             },
           ];
           setColors(newColors);
