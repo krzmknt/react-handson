@@ -1,8 +1,10 @@
 import { useInput } from "./hooks";
+import { useColors } from "./ColorProvider";
 
-export const AddColorForm = ({ onNewColor = (f: any, g: any) => f }) => {
+export const AddColorForm = () => {
   const [titleProps, resetTitle] = useInput("");
   const [colorProps, resetColor] = useInput("#000000");
+  const { addColor } = useColors();
 
   // 更新処理は、入力の onNewColor に任せる
   // なぜなら、ColorList のステートを更新したいから
@@ -10,7 +12,7 @@ export const AddColorForm = ({ onNewColor = (f: any, g: any) => f }) => {
   // デフォルトの POST リクエストをキャンセルする
   const submit = (event: any) => {
     event.preventDefault();
-    onNewColor(titleProps.value, colorProps.value);
+    addColor(titleProps.value, colorProps.value);
     resetTitle();
     resetColor();
   };
