@@ -1,6 +1,7 @@
 import { ColorList } from "./ColorList";
 import { AddColorForm } from "./AddColorForm";
 import { Checkbox } from "./Checkbox";
+import { TextForm } from "./KeyToRender";
 
 export type onRemoveType = (id: string) => any;
 export type onRateType = (id: string, rating: number) => void;
@@ -22,6 +23,7 @@ export const App = () => {
       <AddColorForm />
       <ColorList />
       <Checkbox />
+      <TextForm />
     </>
   );
 };
