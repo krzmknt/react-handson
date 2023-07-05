@@ -1,17 +1,19 @@
-import { useFetch } from "./hooks";
+import { Fetch } from "./Fetch";
 
 interface IGitHubUser {
   login: string;
 }
 
 export const GitHubUser = ({ login }: IGitHubUser) => {
-  const { loading, data, error }: any = useFetch(
-    `https://api.github.com/users/${login}`
+  return (
+    <Fetch
+      uri={`https://api.github.com/users/${login}`}
+      renderSuccess={UserDetails}
+    />
   );
+};
 
-  if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>;
-  if (loading) return <h1>Loading...</h1>;
-
+const UserDetails = ({ data }: any) => {
   return (
     <div className="githubUser">
       <img src={data.avatar_url} alt={data.login} style={{ width: 200 }} />
