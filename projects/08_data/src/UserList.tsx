@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-const bigList = [...Array(5)].map(() => ({
+const bigList = [...Array(5000)].map(() => ({
   name: faker.person.fullName(),
   email: faker.internet.email(),
   avatar: faker.image.avatar(),
