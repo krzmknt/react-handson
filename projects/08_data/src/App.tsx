@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { UserList } from "./UserList";
+import { useFetch } from "./hooks";
 
 interface IGitHubUser {
   login: string;
@@ -9,32 +11,9 @@ const saveJSON = (key: string, data: any) =>
   localStorage.setItem(key, JSON.stringify(data));
 
 const GitHubUser = ({ login }: IGitHubUser) => {
-  const [data, setData] = useState(loadJSON(`user:${login}`));
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (!data) return;
-    if (data.login === login) return;
-    const { name, avatar_url, location } = data;
-    saveJSON(`user:${login}`, {
-      name,
-      login,
-      avatar_url,
-      location,
-    });
-  }, [data]);
-
-  useEffect(() => {
-    if (!login) return;
-    if (data && data.login === login) return;
-    fetch(`https://api.github.com/users/${login}`)
-      .then((response) => response.json())
-      .then(setData)
-      .then(console.log)
-      .then(() => setLoading(false))
-      .catch(console.error);
-  }, [login]);
+  const { loading, data, error } = useFetch(
+    `https://api.github.com/users/${login}`
+  );
 
   if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>;
   if (loading) return <h1>Loading...</h1>;
@@ -52,4 +31,9 @@ const GitHubUser = ({ login }: IGitHubUser) => {
   );
 };
 
-export const App = () => <GitHubUser login="krzmknt" />;
+export const App = () => (
+  <>
+    <UserList />
+    <GitHubUser login="krzmknt" />;
+  </>
+);
