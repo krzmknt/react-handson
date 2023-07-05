@@ -6,7 +6,7 @@ export const UserRepositories = ({ login, onSelect = (f: any) => f }: any) => {
     <Fetch
       uri={`https://api.github.com/users/${login}/repos`}
       renderSuccess={({ data }: any) => (
-        <RepoMenu repositories={data} onSelect={onSelect} />
+        <RepoMenu repositories={data} login={login} />
       )}
     />
   );
