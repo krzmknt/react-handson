@@ -3,7 +3,7 @@ import { useFetch } from "./hooks";
 export const Fetch = ({
   uri,
   renderSuccess,
-  loadingFallback,
+  loadingFallback = <p>Loading</p>,
   renderError = (error: any) => <pre>{JSON.stringify(error, null, 2)}</pre>,
 }: any) => {
   const { loading, data, error } = useFetch(uri);

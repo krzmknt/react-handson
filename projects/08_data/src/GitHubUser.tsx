@@ -1,4 +1,5 @@
 import { Fetch } from "./Fetch";
+import { UserRepositories } from "./UserRepositories";
 
 interface IGitHubUser {
   login: string;
@@ -22,6 +23,10 @@ const UserDetails = ({ data }: any) => {
         {data.name && <p>{data.name}</p>}
         {data.location && <p>{data.location}</p>}
       </div>
+      <UserRepositories
+        login={data.login}
+        onSelect={(repoName: any) => console.log(`${repoName} selected`)}
+      />
     </div>
   );
 };
