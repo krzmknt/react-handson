@@ -67,10 +67,13 @@ export const Services = () => (
 
 export const Location = () => (
   <section>
-    <h2>僕の愛しいありさ</h2>
-    {[...Array(5000)].map((_, i) => (
-      <span key={i}>いつもありがとう🦭</span>
-    ))}
+    <h2>Location</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+      voluptatum, quibusdam, quia, quod voluptate voluptatem quos dolorum
+      voluptas quas quae natus. Quisquam voluptatum, quibusdam, quia, quod
+      voluptate voluptatem quos dolorum voluptas quas quae natus.
+    </p>
   </section>
 );
 export const History = () => (
